@@ -1,11 +1,11 @@
 class Wizard
-    attr_accessor :name, :bearded, :rested, :spell_count
+    attr_reader :name
 
-    def initialize(name, bearded: true, rested: true, spell_count: 0)
+    def initialize(name, bearded: true)
         @name = name
         @bearded = bearded
-        @rested = rested
-        @spell_count = spell_count
+        @rested = true
+        @spell_count = 0
     end
 
     def bearded?
