@@ -15,7 +15,7 @@ describe Round do
   end
 
   describe '#initialize' do
-    it 'is an instance of round' do
+    it 'exists' do
       expect(@round).to be_a Round
     end
 
@@ -53,7 +53,7 @@ describe Round do
       expect(@round.number_correct).to eq(1)
     end
 
-    it 'does not increase the correct guess count if guess is incorrect' do
+    it 'does not increase correct guess count if guess is incorrect' do
       new_turn = @round.take_turn("Nova Scotia")
       expect(@round.number_correct).to eq(0)
     end
