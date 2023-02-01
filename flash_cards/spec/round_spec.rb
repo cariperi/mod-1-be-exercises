@@ -107,5 +107,3 @@ describe Round do
     end
   end 
 end
-
-require 'pry'; binding.pry
