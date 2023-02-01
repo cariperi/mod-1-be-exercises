@@ -1,3 +1,4 @@
+require 'rspec'
 require './lib/card'
 require './lib/turn'
 require './lib/deck'
@@ -106,3 +107,5 @@ describe Round do
     end
   end 
 end
+
+require 'pry'; binding.pry

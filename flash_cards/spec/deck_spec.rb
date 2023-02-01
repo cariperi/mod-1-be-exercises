@@ -1,3 +1,4 @@
+require 'rspec'
 require './lib/card'
 require './lib/deck'
 
@@ -56,5 +57,3 @@ describe Deck do
     end
   end
 end
-
-require 'pry'; binding.pry
