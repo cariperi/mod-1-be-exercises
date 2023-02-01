@@ -37,10 +37,24 @@ class Round
 
   def start
     puts "Welcome! You're playing with #{deck.cards.count} cards."
-    puts "--------------------------------------------------------"
+    puts '-------------------------------------------------'
     
-    puts "This is card number #{deck.cards.find_index(@current_card) + 1} out of #{deck.cards.count}."
-    puts "Question: #{@current_card.question}"
-    guess = gets.chomp!
+    while @turns.count < deck.cards.count do
+      puts "This is card number #{deck.cards.find_index(@current_card) + 1} out of #{deck.cards.count}."
+      puts "Question: #{@current_card.question}"
+      guess = gets.chomp!
+      take_turn(guess)
+      puts @turns.last.feedback
+    end
+
+    puts '****** Game over! ******'
+    puts "You had #{@number_correct} correct guesses out of #{deck.cards.count} for a total score of #{percent_correct.round()}%."
+    categories = []
+    deck.cards.each do |card|
+      categories << card.category
+    end
+    categories.uniq.each do |category|
+      puts "#{category.to_s.gsub("_", " ").capitalize} - #{percent_correct_by_category(category).round()}% correct"
+    end
   end
 end
