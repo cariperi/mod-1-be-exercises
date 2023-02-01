@@ -34,4 +34,13 @@ class Round
     total_category = @turns.select{|turn| turn.card.category == category}.count
     number_correct.fdiv(total_category)*100
   end
+
+  def start
+    puts "Welcome! You're playing with #{deck.cards.count} cards."
+    puts "--------------------------------------------------------"
+    
+    puts "This is card number #{deck.cards.find_index(@current_card) + 1} out of #{deck.cards.count}."
+    puts "Question: #{@current_card.question}"
+    guess = gets.chomp!
+  end
 end
