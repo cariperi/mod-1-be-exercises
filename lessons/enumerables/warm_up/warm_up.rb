@@ -1,11 +1,15 @@
-# 1. Using #each, add to the method below, such that it takes in an array of names, 
+# 1. Using #each, add to the method below, such that it takes in an array of names,
 # and returns an array of all names upcased.
 
 kardashians = ["kris", "kim", "kourtney", "khloe", "rob"]
 
 def upcase_names(names)
- # your code here
-end 
+  #upcased = []
+  names.each do |name|
+    name.upcase!
+  end
+  #upcased
+end
 
 p upcase_names(kardashians)
 
@@ -22,8 +26,12 @@ p upcase_names(kardashians)
 pets = ["Brutus", "Lucky", "Goldie", "Pepper", "Odie"]
 
 def names_ending_in_ie(names)
- # your code here
-end 
+  results = []
+  names.each do |name|
+    results << name if name.end_with?("ie")
+  end
+  results
+end
 
 p names_ending_in_ie(pets)
 
@@ -35,13 +43,13 @@ p names_ending_in_ie(pets)
 
 
 # 3. Using #each, update the method below, such that it takes in an array of integers,
-# and returns the first number that is over 100 when squared. 
+# and returns the first number that is over 100 when squared.
 
 nums = [1, 2, 3, 4, 5, 6, 7, 8, 9, 10, 11, 12, 13, 14, 15]
 
 def first_num_thats_square_is_above_100(nums)
-
-end 
+  nums.each { |num| return num if num ** 2 > 100 }
+end
 
 p first_num_thats_square_is_above_100(nums)
 
