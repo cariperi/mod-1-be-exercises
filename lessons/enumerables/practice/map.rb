@@ -1,10 +1,12 @@
-# All of the methods below have been started for you. To test your code, uncomment the line at the bottom of the page that 
-# prints out the return value of that method.  
+# All of the methods below have been started for you. To test your code, uncomment the line at the bottom of the page that
+# prints out the return value of that method.
 
 
 def capitalize
     names = ["alice", "bob", "charlie"]
-
+    names.map do |name|
+        name.capitalize
+    end
     # Your code goes here
 
     # expected return value is ["Alice", "Bob", "Charlie"]
@@ -12,6 +14,9 @@ end
 
 def doubles
     numbers = [1, 2, 3, 4, 5]
+    numbers.map do |number|
+        number * 2
+    end
 
     # Your code goes here
 
@@ -20,6 +25,7 @@ end
 
 def squares
     numbers = [1, 2, 3, 4, 5]
+    numbers.map { |number| number ** 2 }
 
     # Your code goes here
 
@@ -28,7 +34,7 @@ end
 
 def lengths
     names = ["alice", "bob", "charlie", "david", "eve"]
-
+    names.map { |name| name.length }
     # Your code goes here
 
     # expected return value is [5, 3, 7, 5, 3]
@@ -70,7 +76,7 @@ end
 # p capitalize
 # p doubles
 # p squares
-# p lengths
+p lengths
 # p normalize_zip_codes
 # p backwards
 # p words_with_no_vowels
