@@ -63,11 +63,11 @@ describe Potluck do
       potluck.add_dish(roast_pork)
       potluck.add_dish(cocktail_meatballs)
       potluck.add_dish(candy_salad)
-      expected = couscous_salad.name
-      actual = potluck.get_all_from_category(:appetizer).first.name
+      # expected = couscous_salad.name
+      # actual = potluck.get_all_from_category(:appetizer).first.name
 
       expect(potluck.get_all_from_category(:appetizer).first).to eq(couscous_salad)
-      expect(actual).to eq(expected)
+      expect(couscous_salad.name). to eq(potluck.get_all_from_category(:appetizer).first.name)
     end
 
     it 'does not return any dishes from other categories' do
