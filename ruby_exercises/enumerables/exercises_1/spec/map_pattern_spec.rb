@@ -9,19 +9,21 @@ RSpec.describe 'map pattern' do
     expect(capitalized_names).to eq(["Alice", "Bob", "Charlie"])
   end
 
-  xit 'doubles' do
+  it 'doubles' do
     numbers = [1, 2, 3, 4, 5]
     doubles = []
     numbers.each do |number|
-      # Your code goes here
+      doubles << number * 2
     end
     expect(doubles).to eq([2, 4, 6, 8, 10])
   end
 
-  xit 'squares' do
+  it 'squares' do
     numbers = [1, 2, 3, 4, 5]
     squares = []
-    # Your code goes here
+    numbers.each do |number|
+      squares << number ** 2
+    end
     expect(squares).to eq([1, 4, 9, 16, 25])
   end
 
