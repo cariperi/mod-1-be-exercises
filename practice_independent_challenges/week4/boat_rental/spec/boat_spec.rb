@@ -22,4 +22,14 @@ describe Boat do
       expect(@kayak.hours_rented).to eq(0)
     end
   end
+
+  describe '#add_hour' do
+    it 'can add multiple hours to the total hours rented' do
+      expect(@kayak.hours_rented).to eq(0)
+      @kayak.add_hour
+      @kayak.add_hour
+      @kayak.add_hour
+      expect(@kayak.hours_rented).to_eq(3)
+    end
+  end
 end
