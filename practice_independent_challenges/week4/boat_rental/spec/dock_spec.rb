@@ -38,7 +38,7 @@ end
 
       expect(@dock.rental_log).to be_a Hash
       expect(@dock.rental_log.keys).to eq([@kayak_1, @kayak_2, @sup_1 ])
-      expect(@dock.rental_log.values).to eq([@patrick, @eugene])
+      expect(@dock.rental_log.values).to include(@patrick, @eugene)
       expect(@dock.rental_log[@kayak_1]).to eq(@patrick)
       expect(@dock.rental_log[@kayak_2]).to eq(@patrick)
       expect(@dock.rental_log[@sup_1]).to eq(@eugene)
