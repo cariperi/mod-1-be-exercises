@@ -29,7 +29,7 @@ describe Boat do
       @kayak.add_hour
       @kayak.add_hour
       @kayak.add_hour
-      expect(@kayak.hours_rented).to_eq(3)
+      expect(@kayak.hours_rented).to eq(3)
     end
   end
 end
