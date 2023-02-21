@@ -19,6 +19,7 @@ RSpec.describe Ceo do
     it 'has a name and an id' do
       ceo = Ceo.new(15,20, "Bob", 1999)
       expect(ceo).to be_a(Ceo)
+      expect(ceo.is_a?Employee).to be true
       expect(ceo.name).to eq("Bob")
       expect(ceo.id).to eq(1999)
     end
