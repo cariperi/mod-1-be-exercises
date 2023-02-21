@@ -13,5 +13,4 @@ class Employee
   def benefits
     [:sick_leave]
   end
-
 end
