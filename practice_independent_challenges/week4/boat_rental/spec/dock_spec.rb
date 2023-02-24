@@ -100,4 +100,29 @@ end
       expect(@dock.get_hours(@sup_1)).to eq(3)
     end
   end
+
+  describe '#log_hour' do
+    before(:each) do
+      @kayak_1 = Boat.new(:kayak, 20)
+      @kayak_2 = Boat.new(:kayak, 20)
+      @canoe = Boat.new(:canoe, 25)
+      @sup_1 = Boat.new(:standup_paddle_board, 15)
+      @sup_2 = Boat.new(:standup_paddle_board, 15)
+      @patrick = Renter.new("Patrick Star", "4242424242424242")
+      @eugene = Renter.new("Eugene Crabs", "1313131313131313")
+      @dock.rent(@kayak_1, @patrick)
+      @dock.rent(@kayak_2, @patrick)
+    end
+
+    it 'adds an additional rental hour to all boats currently rented' do
+      expect(@dock.rental_log.keys).to include(@kayak_1, @kayak_2)
+      expect(@kayak_1.hours_rented).to eq(0)
+      expect(@kayak_2.hours_rented).to eq(0)
+
+      @dock.log_hour
+
+      expect(@kayak_1.hours_rented).to eq(1)
+      expect(@kayak_2.hours_rented).to eq(1)
+    end
+  end
 end
