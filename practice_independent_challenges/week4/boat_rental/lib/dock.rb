@@ -1,4 +1,6 @@
 class Dock
+  attr_accessor :revenue
+
   attr_reader :name,
               :max_rental_time,
               :rental_log
@@ -7,6 +9,7 @@ class Dock
     @name = name
     @max_rental_time = max_rental_time
     @rental_log = {}
+    @revenue = 0
   end
 
   def rent(boat, renter)
@@ -36,6 +39,11 @@ class Dock
   end
 
   def return(boat)
+    @revenue += charge(boat)[:amount]
     @rental_log.delete(boat)
+  end
+
+  def revenue
+    @revenue
   end
 end
