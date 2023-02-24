@@ -77,4 +77,27 @@ end
       expect(@dock.charge(@sup_1)).to eq({:card_number => "1313131313131313", :amount => 45})
     end
   end
+
+  describe '#get_hours' do
+    before(:each) do
+      @kayak_1 = Boat.new(:kayak, 20)
+      @kayak_2 = Boat.new(:kayak, 20)
+      @sup_1 = Boat.new(:standup_paddle_board, 15)
+      @patrick = Renter.new("Patrick Star", "4242424242424242")
+      @eugene = Renter.new("Eugene Crabs", "1313131313131313")
+      @dock.rent(@kayak_1, @patrick)
+      @dock.rent(@kayak_2, @patrick)
+      @dock.rent(@sup_1, @eugene)
+      5.times{@sup_1.add_hour}
+      2.times{@kayak_1.add_hour}
+    end
+
+    it 'can return the hours a boat is rented' do
+      expect(@dock.get_hours(@kayak_1)).to eq(2)
+    end
+
+    it 'does not return hours beyond the dock max rental time' do
+      expect(@dock.get_hours(@sup_1)).to eq(3)
+    end
+  end
 end
