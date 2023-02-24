@@ -125,4 +125,31 @@ end
       expect(@kayak_2.hours_rented).to eq(1)
     end
   end
+
+  describe '#return' do
+    before(:each) do
+      @kayak_1 = Boat.new(:kayak, 20)
+      @kayak_2 = Boat.new(:kayak, 20)
+      @canoe = Boat.new(:canoe, 25)
+      @sup_1 = Boat.new(:standup_paddle_board, 15)
+      @sup_2 = Boat.new(:standup_paddle_board, 15)
+      @patrick = Renter.new("Patrick Star", "4242424242424242")
+      @eugene = Renter.new("Eugene Crabs", "1313131313131313")
+
+      @dock.rent(@kayak_1, @patrick)
+      @dock.rent(@kayak_2, @patrick)
+      @dock.log_hour
+      @dock.rent(@canoe, @patrick)
+      @dock.log_hour
+    end
+
+    it 'can return a boat' do
+      expect(@dock.rental_log.keys).to include(@kayak_1, @kayak_2, @canoe)
+
+      @dock.return(@kayak_1)
+
+      expect(@dock.rental_log.keys).to include(@kayak_2, @canoe)
+      expect(@dock.rental_log.keys).to_not include(@kayak_1)
+    end
+  end
 end
