@@ -28,4 +28,10 @@ class Dock
     end
     hours
   end
+
+  def log_hour
+    @rental_log.each do |boat, renter|
+      boat.hours_rented += 1
+    end
+  end
 end
