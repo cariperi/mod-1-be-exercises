@@ -180,6 +180,19 @@ end
       @dock.return(@canoe)
 
       expect(@dock.revenue).to eq(105)
+
+      @dock.rent(@sup_1, @eugene)
+      @dock.rent(@sup_2, @eugene)
+      @dock.log_hour
+      @dock.log_hour
+      @dock.log_hour
+      @dock.log_hour
+      @dock.log_hour
+
+      @dock.return(@sup_1)
+      @dock.return(@sup_2)
+
+      expect(@dock.revenue).to eq(195)
     end
   end
 end
