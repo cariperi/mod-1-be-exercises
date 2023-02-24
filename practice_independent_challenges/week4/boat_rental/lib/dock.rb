@@ -34,4 +34,8 @@ class Dock
       boat.hours_rented += 1
     end
   end
+
+  def return(boat)
+    @rental_log.delete(boat)
+  end
 end
