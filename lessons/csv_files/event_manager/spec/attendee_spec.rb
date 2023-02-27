@@ -37,4 +37,8 @@ describe Attendee do
     expect(@person_3.zipcode).to eq "00000"
     expect(@person_4.zipcode).to eq "21230"
   end
+
+  it 'can display information in a formatted string' do
+    expect(@person_1.display).to eq('1: Allison Nguyen, 20010')
+  end
 end
