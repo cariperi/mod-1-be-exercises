@@ -1,37 +1,27 @@
-# ./lib/event_manager.rb
-require "csv"
-puts "EventManager initialized."
+require 'csv'
 
-# contents = File.read 'data/event_attendees.csv'
-# puts contents
+class EventManager
+  attr_reader :contents,
+              :attendees
 
-# lines = File.readlines 'data/event_attendees.csv'
-# row_index = 0
-# lines.each_with_index do |line, index|
-#   next if index == 0
-#   columns = line.split(',')
-#   name = columns[2]
-#   puts name
-# end
+  def initialize(file_name)
+    @contents = open_file(file_name)
+    @attendees = []
+  end
 
+  def open_file(file_name)
+    CSV.open file_name, headers: true, header_converters: :symbol
+  end
 
-def clean_zipcode(zipcode)
-  zipcode.to_s.rjust(5, '0')[0..4]
-  # if zipcode.nil?
-  #   zipcode = '00000'
-  # elsif zipcode.length < 5
-  #   zipcode = zipcode.rjust 5, '0'
-  # elsif zipcode.length > 5
-  #   zipcode = zipcode[0..4]
-  # else
-  #   zipcode
-  # end
-end
+  def create_attendees
+    @contents.map do |row|
+      @attendees << Attendee.new(row[:id], row[:first_name], row[:last_name], row[:zipcode])
+    end
+  end
 
-contents = CSV.open 'data/event_attendees.csv', headers: true, header_converters: :symbol
-
-contents.each do |row|
-  name = row[:first_name]
-  zipcode = clean_zipcode(row[:zipcode])
-  puts "#{name} #{zipcode}"
+  def display_attendees
+    @attendees.each do |attendee|
+      puts attendee.display
+    end
+  end
 end
