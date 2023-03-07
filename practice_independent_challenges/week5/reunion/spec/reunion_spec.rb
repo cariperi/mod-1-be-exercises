@@ -55,10 +55,13 @@ describe Reunion do
       @activity_2.add_participant("Nancy", 30)
       @activity_2.add_participant("Maria", 20)
 
+      @reunion.add_activity(@activity_1)
+      @reunion.add_activity(@activity_2)
+
       expect(@reunion.settle_up).to be_a Hash
       expect(@reunion.settle_up.keys.count).to eq(4)
       expect(@reunion.settle_up.keys).to eq(["Maria", "Luther", "Bob", "Nancy"])
-      expect(@reunion.settle_up.values).to eq([20, -10, 10, 0])
+      expect(@reunion.settle_up.values).to eq([20, -10, -10, 0])
     end
   end
 end
