@@ -64,4 +64,10 @@ describe Reunion do
       expect(@reunion.settle_up.values).to eq([20, -10, -10, 0])
     end
   end
+
+  describe '#print_summary' do
+    it 'prints a summary of all participants and what they owe' do
+      expect(@reunion.print_summary).to be_a String
+    end
+  end
 end
