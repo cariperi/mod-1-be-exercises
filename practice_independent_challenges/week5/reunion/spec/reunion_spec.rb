@@ -67,6 +67,15 @@ describe Reunion do
 
   describe '#print_summary' do
     it 'prints a summary of all participants and what they owe' do
+      @activity_1.add_participant("Maria", 20)
+      @activity_1.add_participant("Luther", 40)
+      @activity_2.add_participant("Bob", 40)
+      @activity_2.add_participant("Nancy", 30)
+      @activity_2.add_participant("Maria", 20)
+
+      @reunion.add_activity(@activity_1)
+      @reunion.add_activity(@activity_2)
+
       expect(@reunion.print_summary).to be_a String
     end
   end
