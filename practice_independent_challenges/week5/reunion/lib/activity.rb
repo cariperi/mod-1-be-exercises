@@ -15,4 +15,9 @@ class Activity
     return 0 if @participants.empty?
     @participants.values.sum
   end
+
+  def split
+    return 0 if @participants.empty?
+    (total_cost) / (@participants.keys.count)
+  end
 end
