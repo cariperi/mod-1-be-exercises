@@ -14,5 +14,9 @@ describe Reunion do
     it 'has a name' do
       expect(@reunion.name).to eq("1406 BE")
     end
+
+    it 'has activities that starts as empty by default' do
+      expect(@reunion.activities).to eq([])
+    end
   end
 end
