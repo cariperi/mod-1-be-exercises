@@ -26,4 +26,16 @@ describe Activity do
       expect(@activity.participants).to eq({"Maria" => 20, "Luther" => 40})
     end
   end
+
+  describe '#total_cost' do
+    it 'can return the total cost of the activity' do
+      expect(@activity.total_cost).to eq(0)
+
+      @activity.add_participant("Maria", 20)
+      expect(@activity.total_cost).to eq(20)
+
+      @activity.add_participant("Luther", 40)
+      expect(@activity.total_cost).to eq(40)
+    end
+  end
 end
