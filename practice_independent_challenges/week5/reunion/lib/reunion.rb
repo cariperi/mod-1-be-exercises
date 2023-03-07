@@ -24,4 +24,13 @@ class Reunion
     end
     settle_up
   end
+
+  def print_summary
+    to_print = []
+    settle_up.each do |name, amount|
+      to_print << "#{name} owes #{amount}."
+    end
+    puts to_print.join("\n")
+    return "End of print."
+  end
 end
