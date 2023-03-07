@@ -15,4 +15,15 @@ describe Activity do
       expect(@activity.participants).to eq({})
     end
   end
+
+  describe '#add_participant' do
+    it 'can add participants and their amounts paid to the activity' do
+      expect(@activity.participants).to eq({})
+
+      @activity.add_participant("Maria", 20)
+      @activity.add_participant("Luther", 40)
+
+      expect(@activity.participants).to eq({"Maria" => 20, "Luther" => 40})
+    end
+  end
 end
