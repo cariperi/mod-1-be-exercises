@@ -4,6 +4,7 @@ describe Reunion do
   before(:each) do
     @reunion = Reunion.new("1406 BE")
     @activity_1 = Activity.new("Brunch")
+    @activity_2 = Activity.new("Frisbee")
   end
 
   describe '#initialize' do
@@ -28,6 +29,21 @@ describe Reunion do
 
       expect(@reunion.activities).to eq([@activity_1])
       expect(@reunion.activities[0]).to be_a Activity
+    end
+  end
+
+  describe '#total_cost' do
+    it 'can return the total cost of the reunion event' do
+      @activity_1.add_participant("Maria", 20)
+      @activity_1.add_participant("Luther", 40)
+      @activity_2.add_participant("Bob", 50)
+      @activity_2.add_participant("Nancy", 30)
+
+      @reunion.add_activity(@activity_1)
+      @reunion.add_activity(@activity_2)
+
+      expect(@reunion.total_cost).to be_a Integer
+      expect(@reunion.total_cost).to eq(140)
     end
   end
 end
