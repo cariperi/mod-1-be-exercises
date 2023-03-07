@@ -46,4 +46,19 @@ describe Reunion do
       expect(@reunion.total_cost).to eq(140)
     end
   end
+
+  describe '#settle_up' do
+    it 'can return a hash with participants and what they owe in total' do
+      @activity_1.add_participant("Maria", 20)
+      @activity_1.add_participant("Luther", 40)
+      @activity_2.add_participant("Bob", 40)
+      @activity_2.add_participant("Nancy", 30)
+      @activity_2.add_participant("Maria", 20)
+
+      expect(@reunion.settle_up).to be_a Hash
+      expect(@reunion.settle_up.keys.count).to eq(4)
+      expect(@reunion.settle_up.keys).to eq(["Maria", "Luther", "Bob", "Nancy"])
+      expect(@reunion.settle_up.values).to eq([20, -10, 10, 0])
+    end
+  end
 end
