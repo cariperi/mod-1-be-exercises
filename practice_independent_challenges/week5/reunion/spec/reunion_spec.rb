@@ -19,4 +19,15 @@ describe Reunion do
       expect(@reunion.activities).to eq([])
     end
   end
+
+  describe '#add_activity' do
+    it 'can add an activity object to the reunions activities' do
+      expect(@reunion.activities).to eq([])
+
+      @reunion.add_activity(@activity_1)
+
+      expect(@reunion.activities).to eq([@activity_1])
+      expect(@reunion.activities[0]).to be_a Activity
+    end
+  end
 end
