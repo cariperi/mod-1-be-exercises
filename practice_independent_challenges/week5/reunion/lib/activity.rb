@@ -20,4 +20,12 @@ class Activity
     return 0 if @participants.empty?
     (total_cost) / (@participants.keys.count)
   end
+
+  def owed
+    owed = {}
+    @participants.each do |name, amount|
+      owed[name] = split - amount
+    end
+    owed
+  end
 end
