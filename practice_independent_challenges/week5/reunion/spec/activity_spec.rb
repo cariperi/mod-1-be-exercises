@@ -35,7 +35,7 @@ describe Activity do
       expect(@activity.total_cost).to eq(20)
 
       @activity.add_participant("Luther", 40)
-      expect(@activity.total_cost).to eq(40)
+      expect(@activity.total_cost).to eq(60)
     end
   end
 end

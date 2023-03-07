@@ -10,4 +10,9 @@ class Activity
   def add_participant(name, amount)
     @participants[name] = amount
   end
+
+  def total_cost
+    return 0 if @participants.empty?
+    @participants.values.sum
+  end
 end
